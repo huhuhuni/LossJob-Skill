@@ -1,6 +1,6 @@
-# 失业 — Claude Code Skill
+# 失业互助 Skill
 
-帮助失业人群的 Claude Code Skill，提供**裁员维权**和**心理支持**两个核心功能。
+帮助失业人群的 AI Skill，提供**裁员维权**和**心理支持**两个核心功能。兼容 Claude Code、OpenClaw 等本地 Agent。
 
 ## 功能
 
@@ -27,37 +27,50 @@
 
 E 类心理危机优先级最高，一旦识别到相关信号，立即停止求职建议，只给心理安全支持。
 
-## 安装
+## 安装与使用
+
+### Claude Code
 
 ```bash
 # 从 GitHub 安装
-claude plugin install huni/lostJob-Skill
+claude plugin install huni/LossJob-Skill
 ```
 
-或者手动安装：
+或手动安装：
 
 ```bash
-git clone https://github.com/huni/lostJob-Skill.git
-claude --plugin-dir ./lostJob-Skill
+git clone https://github.com/huhuhuni/LossJob-Skill.git
+claude --plugin-dir ./LossJob-Skill
 ```
 
-## 使用
-
-安装后，以下说法都会自动触发：
+安装后，以下说法会自动触发 Skill：
 
 - "被裁员了，赔偿金只给了N"
 - "投了三个月简历没回音"
 - "存款快没了不知道怎么办"
-- "做了15年柜台，这些岗位都没了"
 - "公司调岗降薪逼我走"
-- "试用期被辞退有赔偿吗"
 - "感觉活着没意思"
 
 也可以直接输入命令：
 
 ```
-/失业:失业 刚被裁了不知道怎么办
+/unemployment:unemployment 刚被裁了不知道怎么办
 ```
+
+### OpenClaw / 其他 Agent
+
+将 `system-prompt.md` 的内容设置为系统提示词（System Prompt），`references/` 目录下的文件作为知识库加载。
+
+```
+LossJob-Skill/skills/unemployment/
+├── system-prompt.md      ← 系统提示词，粘贴到 Agent 的 System Prompt 设置
+├── references/
+│   ├── labor-law.md      ← 作为知识库/参考文件加载
+│   ├── arbitration.md    ← 作为知识库/参考文件加载
+│   └── strategies.md     ← 作为知识库/参考文件加载
+```
+
+**ChatGPT / 豆包 / Kimi 等**：复制 `system-prompt.md` 内容到自定义指令（Custom Instructions），`references/` 文件内容可追加到知识库。
 
 ## 示例对话
 
@@ -76,15 +89,16 @@ claude --plugin-dir ./lostJob-Skill
 ## 项目结构
 
 ```
-lostJob-Skill/
-├── .claude-plugin/plugin.json
-├── skills/失业/
-│   ├── SKILL.md                    # 核心入口
+LossJob-Skill/
+├── .claude-plugin/plugin.json          ← Claude Code 插件声明
+├── skills/unemployment/
+│   ├── SKILL.md                        ← Claude Code Skill 入口
+│   ├── system-prompt.md                ← 通用系统提示词（任何 Agent 可用）
+│   ├── README.md
 │   └── references/
-│       ├── labor-law.md            # 劳动法、赔偿金、税率、证据
-│       ├── arbitration.md          # 仲裁流程、开庭、执行
-│       └── strategies.md           # 经历回应详细策略
-├── README.md
+│       ├── labor-law.md                ← 劳动法、赔偿金、税率、证据
+│       ├── arbitration.md              ← 仲裁流程、开庭、执行
+│       └── strategies.md               ← 经历回应详细策略
 └── .gitignore
 ```
 
