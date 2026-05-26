@@ -1,4 +1,4 @@
-# 失业互助 Skill
+# 失业 Skill
 
 帮助失业人群的 AI Skill，提供**裁员维权**和**心理支持**两个核心功能。兼容 Claude Code、OpenClaw 等本地 Agent。
 
