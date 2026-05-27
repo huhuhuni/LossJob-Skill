@@ -1,9 +1,0 @@
-{
-  "name": "unemployment",
-  "description": "失业互助Skill——裁员维权与心理支持",
-  "version": "1.0.0",
-  "author": {
-    "name": "huni"
-  },
-  "license": "MIT"
-}

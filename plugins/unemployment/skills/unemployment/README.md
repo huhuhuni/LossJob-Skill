@@ -1,4 +1,4 @@
-# 失业互助 Skill
+# 失业 Skill
 
 帮助失业人群的 AI Skill，提供**裁员维权**和**心理支持**两个核心功能。兼容 Claude Code、OpenClaw 等本地 Agent。
 
@@ -27,21 +27,17 @@
 
 E 类心理危机优先级最高，一旦识别到相关信号，立即停止求职建议，只给心理安全支持。
 
-## 安装与使用
+## 安装
 
-### Claude Code
+把仓库地址给 Agent，让它自己装：
 
-```bash
-# 从 GitHub 安装
-claude plugin install huni/LossJob-Skill
+```
+https://github.com/huhuhuni/LossJob-Skill
 ```
 
-或手动安装：
+支持 Claude Code、OpenClaw 等支持 Skill 安装的 Agent。
 
-```bash
-git clone https://github.com/huhuhuni/LossJob-Skill.git
-claude --plugin-dir ./LossJob-Skill
-```
+## 使用
 
 安装后，以下说法会自动触发 Skill：
 
@@ -57,20 +53,9 @@ claude --plugin-dir ./LossJob-Skill
 /unemployment:unemployment 刚被裁了不知道怎么办
 ```
 
-### OpenClaw / 其他 Agent
+### 不支持 Skill 安装的 Agent
 
-将 `system-prompt.md` 的内容设置为系统提示词（System Prompt），`references/` 目录下的文件作为知识库加载。
-
-```
-LossJob-Skill/skills/unemployment/
-├── system-prompt.md      ← 系统提示词，粘贴到 Agent 的 System Prompt 设置
-├── references/
-│   ├── labor-law.md      ← 作为知识库/参考文件加载
-│   ├── arbitration.md    ← 作为知识库/参考文件加载
-│   └── strategies.md     ← 作为知识库/参考文件加载
-```
-
-**ChatGPT / 豆包 / Kimi 等**：复制 `system-prompt.md` 内容到自定义指令（Custom Instructions），`references/` 文件内容可追加到知识库。
+对于 ChatGPT、豆包、Kimi 等不支持 Skill 的平台，将 `system-prompt.md` 全部内容复制到自定义指令（Custom Instructions）即可。`system-prompt.md` 已包含所有法律依据、仲裁流程和回应策略，无需额外加载文件。
 
 ## 示例对话
 
@@ -93,7 +78,7 @@ LossJob-Skill/
 ├── .claude-plugin/plugin.json          ← Claude Code 插件声明
 ├── skills/unemployment/
 │   ├── SKILL.md                        ← Claude Code Skill 入口
-│   ├── system-prompt.md                ← 通用系统提示词（任何 Agent 可用）
+│   ├── system-prompt.md                ← 通用系统提示词（自包含，任何 Agent 可用）
 │   ├── README.md
 │   └── references/
 │       ├── labor-law.md                ← 劳动法、赔偿金、税率、证据
@@ -101,6 +86,8 @@ LossJob-Skill/
 │       └── strategies.md               ← 经历回应详细策略
 └── .gitignore
 ```
+
+> `system-prompt.md` 已内联 references 的全部内容，可直接粘贴使用。`references/` 目录供 Claude Code 的 SKILL.md 动态引用，或作为独立参考资料查阅。
 
 ## 免责声明
 

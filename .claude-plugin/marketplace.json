@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "LossJob-Skill",
+  "version": "1.0.0",
+  "description": "失业互助Skill——裁员维权与心理支持，提供赔偿金计算、仲裁流程指导、分层心理支持",
+  "owner": {
+    "name": "huni"
+  },
+  "plugins": [
+    {
+      "name": "unemployment",
+      "description": "失业互助助手，提供裁员维权（赔偿金计算、仲裁流程、利弊权衡）和心理支持（分层回应策略）两个核心功能",
+      "source": "./plugins/unemployment",
+      "category": "productivity"
+    }
+  ]
+}
